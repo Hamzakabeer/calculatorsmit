@@ -1,8 +1,16 @@
 const display = document.getElementById('display');
 
 function append(value) {
-    if (display.innerText === '0') {
+    const operators = ['+', '-', '*', '/', '%', '^2', '√', '1/'];
+    const lastChar = display.innerText[display.innerText.length - 1];
+
+
+    if (display.innerText === '0' && !operators.includes(value)) {
         display.innerText = value;
+    }
+   
+    else if (operators.includes(value) && operators.includes(lastChar)) {
+        display.innerText = display.innerText.slice(0, -1) + value;
     } else {
         display.innerText += value;
     }
